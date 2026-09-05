@@ -1,4 +1,4 @@
-package com.example.climbmanagement.entity;
+package com.example.climbmanagement.entity.enums;
 
 public enum RouteType {
     TOPROPE,
