@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.climbmanagement.DTOs.gym.CreateGymDTO;
 import com.example.climbmanagement.DTOs.gym.ResponseGymDTO;
+import com.example.climbmanagement.exception.InvalidRequestException;
 import com.example.climbmanagement.service.GymService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,11 @@ public class GymController {
 
     @PostMapping
     public ResponseGymDTO createGym(@RequestBody CreateGymDTO gym) {
+
+        if (gym.getName() == null || gym.getName().isBlank()) {
+            throw new InvalidRequestException("Name darf nicht leer sein.");
+        }
+
         return gymService.createGym(gym);
     }
 
